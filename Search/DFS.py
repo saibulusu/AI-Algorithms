@@ -7,15 +7,14 @@ def dfs(graph, src, dest):
     stack = []
     stack.append(src)
     done = []
-    done.append(src)
-    while (len(stack) != 0):
+    while (stack):
         cur = stack.pop()
         print(cur)
         done.append(cur)
-        if (cur is dest):
+        if cur is dest:
             return True
         for i in graph.nodes[cur].neighbors:
-            if i not in done:
+            if i not in done and i not in stack:
                 stack.append(i)
     return False
 
@@ -28,4 +27,4 @@ edges = ['AB', 'AE', 'BF', 'DE', 'DH', 'EH', 'FG', 'FI', 'FJ', 'GJ', 'HI']
 for edge in edges:
    g.add_edge(edge[:1], edge[1:])
 
-print(dfs(g, 'A', 'B'))
+print(dfs(g, 'A', 'C'))

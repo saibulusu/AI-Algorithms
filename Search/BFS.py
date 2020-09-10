@@ -14,7 +14,7 @@ def bfs(graph, src, dest):
         cur = queue[index]
         print(cur)
         index += 1
-        if (cur is dest):
+        if cur is dest:
             return True
         for i in graph.nodes[cur].neighbors:
             if i not in queue:
