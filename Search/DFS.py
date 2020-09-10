@@ -1,24 +1,23 @@
 from Graph import Graph, Node
-from queue import Queue
 
-# Breadth First Search
-def bfs(graph, src, dest):
+# Depth First Search
+def dfs(graph, src, dest):
     if src not in graph.nodes or dest not in graph.nodes:
         return False
-    queue = []
-    queue.append(src)
-    index = 0
-    while (True):
-        if (index >= len(queue)):
-            return False
-        cur = queue[index]
+    stack = []
+    stack.append(src)
+    done = []
+    done.append(src)
+    while (len(stack) != 0):
+        cur = stack.pop()
         print(cur)
-        index += 1
+        done.append(cur)
         if (cur is dest):
             return True
         for i in graph.nodes[cur].neighbors:
-            if i not in queue:
-                queue.append(i)
+            if i not in done:
+                stack.append(i)
+    return False
 
 # Testing Code
 g = Graph()
@@ -29,4 +28,4 @@ edges = ['AB', 'AE', 'BF', 'DE', 'DH', 'EH', 'FG', 'FI', 'FJ', 'GJ', 'HI']
 for edge in edges:
    g.add_edge(edge[:1], edge[1:])
 
-print(bfs(g, 'A', 'H'))
+print(dfs(g, 'A', 'B'))
