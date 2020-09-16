@@ -4,10 +4,9 @@ class Node:
 		self.name = name
 		self.neighbors = list()
 	
-	def add_neighbor(self, v):
+	def add_neighbor(self, v, weight):
 		if v not in self.neighbors:
-			self.neighbors.append(v)
-			self.neighbors.sort()
+			self.neighbors.append({v, weight})
 			return True
 		else:
 			return False
@@ -23,14 +22,14 @@ class Graph:
 		else:
 			return False
 	
-	def add_edge(self, v, u):
+	def add_edge(self, v, u, weight):
 		if v not in self.nodes or u not in self.nodes:
 			return False
 		for key, value in self.nodes.items():
 			if key == v:
-				value.add_neighbor(u)
+				value.add_neighbor(u, weight)
 			if key == u:
-				value.add_neighbor(v)
+				value.add_neighbor(v, weight)
 		return True
 	
 	def print(self):

@@ -29,4 +29,4 @@ edges = ['AB', 'AE', 'BF', 'DE', 'DH', 'EH', 'FG', 'FI', 'FJ', 'GJ', 'HI']
 for edge in edges:
    g.add_edge(edge[:1], edge[1:])
 
-print(bfs(g, 'A', 'H'))
+print(bfs(g, 'D', 'D'))
