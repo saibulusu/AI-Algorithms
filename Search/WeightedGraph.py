@@ -6,7 +6,12 @@ class Node:
 	
 	def add_neighbor(self, v, weight):
 		if v not in self.neighbors:
-			self.neighbors.append({v, weight})
+			self.neighbors.append(
+				{
+					'NAME': v,
+					'WEIGHT': weight
+				}
+			)
 			return True
 		else:
 			return False
