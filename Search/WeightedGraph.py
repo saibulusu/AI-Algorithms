@@ -26,7 +26,7 @@ class Graph:
 			return True
 		else:
 			return False
-	
+
 	def add_edge(self, v, u, weight):
 		if v not in self.nodes or u not in self.nodes:
 			return False
@@ -36,7 +36,13 @@ class Graph:
 			if key == u:
 				value.add_neighbor(v, weight)
 		return True
-	
+
+	def get_neighbors(self, v):
+		for node in self.nodes:
+			if node.name == v:
+				return node.neighbors
+		return None
+
 	def print(self):
 		for i in sorted(list(self.nodes.keys())):
 			print(i + str(self.nodes[i].neighbors))
